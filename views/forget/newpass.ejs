@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <style>
+        /* Reset styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Centered container */
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        /* Heading styling */
+        h1 {
+            font-size: 26px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        /* Label styling */
+        label {
+            font-size: 14px;
+            color: #555;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        /* Input styling */
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        /* Input focus styling */
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+        }
+
+        /* Button styling */
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button hover effect */
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Error message styling */
+        .error {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Link to login or additional actions */
+        .link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .link a {
+            color: #007bff;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reset Your Password</h1>
+        <form action="/forget/set/<%= token %>" method="POST">
+            <!-- Password input -->
+            <div>
+                <label for="password">New Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter new password" required>
+            </div>
+
+            <!-- Re-password input -->
+            <div>
+                <label for="repassword">Re-Type Password:</label>
+                <input type="password" id="repassword" name="repassword" placeholder="Confirm new password" required>
+            </div>
+
+            <!-- Error message -->
+            <% if (typeof error !== 'undefined' && error) { %>
+            <div class="error">
+                <p><%= error %></p>
+            </div>
+            <% } %>
+
+            <!-- Submit button -->
+            <div>
+                <button type="submit">Reset Password</button>
+            </div>
+        </form>
+
+        <!-- Back to login link -->
+        <div class="link">
+            <p>Remembered your password? <a href="/login">Go back to Login</a></p>
+        </div>
+    </div>
+</body>
+</html>
